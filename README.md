@@ -1,0 +1,2 @@
+# notlar
+Genel Notlar
