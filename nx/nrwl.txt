@@ -1,0 +1,214 @@
+************************************************************************
+ Usage: create-nx-workspace <name> [options] [new workspace options]
+
+  Create a new Nx workspace
+
+  Options:
+
+    name                      Workspace name (e.g., org name)
+
+    preset                    What to create in a new workspace (options: "empty", "oss", "web-components", "angular", "angular-nest", "react", "react-express", "next", "gatsby", "nest")
+
+    appName                   The name of the application created by some presets
+
+    cli                       CLI to power the Nx workspace (options: "nx", "angular")
+
+    style                     Default style option to be used when a non-empty preset is selected
+                              options: ("css", "scss", "styl", "less") for React/Next.js also ("styled-components", "@emotion/styled")
+
+    linter                    Default linter. Options: "eslint", "tslint".
+
+    interactive               Enable interactive mode when using presets (boolean)
+
+    packageManager            Package manager to use (npm, yarn, pnpm)
+
+    nx-cloud                  Use Nx Cloud (boolean)
+**************************************************************************
+
+1.	npx create-nx-workspace isd --preset=empty --cli=angular
+2.	npm install --legacy-peer-deps -D @nrwl/angular
+3.	npx nx g @nrwl/angular:init
+4.	npm install --legacy-peer-deps -D @nrwl/nest
+5.	npx nx g @nrwl/nest:init
+
+**************************************************************************
+**************************************************************************
+
+nx generate @nrwl/angular:application [name] [options,...]
+
+Options:
+  --name                  The name of the application.
+  --directory             The directory of the new application.
+  --style                 The file extension to be used for style files. (default: css)
+  --routing               Generates a routing module.
+  --inlineStyle           Specifies if the style will be in the ts file.
+  --inlineTemplate        Specifies if the template will be in the ts file.
+  --viewEncapsulation     Specifies the view encapsulation strategy.
+  --enableIvy             Create a new app that uses the Ivy rendering engine. (default: true)
+  --prefix                The prefix to apply to generated selectors.
+  --skipTests             Skip creating spec files.
+  --skipFormat            Skip formatting files
+  --skipPackageJson       Do not add dependencies to package.json.
+  --unitTestRunner        Test runner to use for unit tests (default: jest)
+  --e2eTestRunner         Test runner to use for end to end (e2e) tests (default: cypress)
+  --tags                  Add tags to the application (used for linting)
+  --linter                The tool to use for running lint checks. (default: eslint)
+  --backendProject        Backend project that provides data to this application. This sets up proxy.config.json.
+  --strict                Creates an application with stricter type checking and build optimization options.
+  --dryRun                Runs through and reports activity without writing to disk.
+  --skip-nx-cache         Skip the use of Nx cache.
+  --help
+
+**************************************************************************
+**************************************************************************
+
+nx generate @nrwl/nest:application [name] [options,...]
+
+Options:
+  --name                  The name of the application.
+  --directory             The directory of the new application.
+  --skipFormat            Skip formatting files
+  --skipPackageJson       Do not add dependencies to package.json.
+  --linter                The tool to use for running lint checks. (default: eslint)
+  --unitTestRunner        Test runner to use for unit tests (default: jest)
+  --tags                  Add tags to the application (used for linting)
+  --frontendProject       Frontend project that needs to access this application. This sets up proxy configuration.
+  --dryRun                Runs through and reports activity without writing to disk.
+  --skip-nx-cache         Skip the use of Nx cache.
+  --help
+
+**************************************************************************
+**************************************************************************
+
+6. nx g @nrwl/nest:application --name=backend --frontendProject=frontend
+
+**************************************************************************
+**************************************************************************
+
+nx generate @nrwl/angular:library [name] [options,...]
+
+Options:
+  --name                  Library name
+  --directory             A directory where the lib is placed
+  --publishable           Generate a publishable library.
+  --buildable             Generate a buildable library.
+  --prefix                The prefix to apply to generated selectors.
+  --skipFormat            Skip formatting files
+  --simpleModuleName      Keep the module name simple (when using --directory)
+  --addModuleSpec         Add a module spec file.
+  --skipPackageJson       Do not add dependencies to package.json.
+  --skipTsConfig          Do not update tsconfig.json for development experience.
+  --style                 The file extension to be used for style files.
+(default: css)
+  --routing               Add router configuration. See lazy for more information.
+  --lazy                  Add RouterModule.forChild when set to true, and a simple array of routes when set to false.
+  --parentModule          Update the router configuration of the parent module using loadChildren or children, depending on what `lazy` is set to.
+  --tags                  Add tags to the library (used for linting)
+  --unitTestRunner        Test runner to use for unit tests (default: jest)
+  --importPath            The library name used to import it, like @myorg/my-awesome-lib. Must be a valid npm name.
+  --strict                Creates a library with stricter type checking and build optimization options.
+  --linter                The tool to use for running lint checks. (default: eslint)
+  --enableIvy             Enable Ivy for library in tsconfig.lib.prod.json. Should not be used with publishable libraries.
+  --dryRun                Runs through and reports activity without writing to disk.
+  --skip-nx-cache         Skip the use of Nx cache.
+  --help                  Show available options for project target.
+
+**************************************************************************
+**************************************************************************
+
+nx generate @nrwl/nest:library [name] [options,...]
+
+Options:
+  --name                  Library name
+  --directory             A directory where the app is placed
+  --linter                The tool to use for running lint checks. (default: eslint)
+  --unitTestRunner        Test runner to use for unit tests (default: jest)
+  --tags                  Add tags to the library (used for linting)
+  --skipFormat            Skip formatting files
+  --skipTsConfig          Do not update tsconfig.base.json for development experienc
+e.
+  --publishable           Create a publishable library.
+  --buildable             Generate a buildable library.
+  --importPath            The library name used to import it, like @myorg/my-awesome-lib. Must be a valid npm name.
+  --global                Add the Global decorator to the generated module.
+  --service               Include a service with the library.
+  --controller            Include a controller with the library
+  --testEnvironment       The test environment for jest, for node applications this should stay as node unless doing DOM testing. (default: node)
+  --target                The es target, Nest suggest using es6 or higher. (default: es6)
+  --strict                Whether to enable tsconfig strict mode or not.
+  --dryRun                Runs through and reports activity without writing to disk.
+  --skip-nx-cache         Skip the use of Nx cache.
+  --help                  Show available options for project target.
+
+
+
+*****************************************************
+*****************                  ******************   
+***************** ANGULAR MATERIAL ******************
+*****************                  ******************
+*****************************************************
+
+
+nx generate @angular/material:ng-add [options,...]
+
+Options:
+  --project               Name of the project.
+  --theme                 The theme to apply (default: indigo-pink)
+  --typography            Whether to set up global typography styles.
+  --animations            Whether Angular browser animations should be set up. (default: true)
+  --dryRun                Runs through and reports activity without writing to disk.
+  --skip-nx-cache         Skip the use of Nx cache.
+  --help                  Show available options for project target.
+
+*******************************************************************************
+
+
+ nx generate @angular/material:dashboard [name] [options,...]
+
+Options:
+  --path                  The path to create the component.
+  --project               The name of the project.
+  --name                  The name of the component.
+  --inlineStyle           Specifies if the style will be in the ts file.
+  --inlineTemplate        Specifies if the template will be in the ts file.
+  --viewEncapsulation     Specifies the view encapsulation strategy.
+  --changeDetection       Specifies the change detection strategy. (default: Default)
+  --prefix                The prefix to apply to generated selectors.
+  --style                 The file extension to be used for style files.
+  --skipTests             When true, does not generate a test file.
+  --flat                  Flag to indicate if a dir is created.
+  --skipImport            Flag to skip the module import.
+  --selector              The selector to use for the component.
+  --module                Allows specification of the declaring module.
+  --export                Specifies if declaring module exports the component.
+  --entryComponent        Specifies if the component is an entry component of declaring module.
+  --dryRun                Runs through and reports activity without writing to disk.
+  --skip-nx-cache         Skip the use of Nx cache.
+  --help                  Show available options for project target.
+
+******************************************************************************
+
+nx generate @angular/material:navigation [name] [options,...]
+
+Options:
+  --path                  The path to create the component.
+  --project               The name of the project.
+  --name                  The name of the component.
+  --inlineStyle           Specifies if the style will be in the ts file.
+  --inlineTemplate        Specifies if the template will be in the ts file.
+  --viewEncapsulation     Specifies the view encapsulation strategy.
+  --changeDetection       Specifies the change detection strategy. (default: Default)
+  --prefix                The prefix to apply to generated selectors.
+  --style                 The file extension to be used for style files.
+  --skipTests             When true, does not generate a test file.
+  --flat                  Flag to indicate if a dir is created.
+  --skipImport            Flag to skip the module import.
+  --selector              The selector to use for the component.
+  --module                Allows specification of the declaring module.
+  --export                Specifies if declaring module exports the component.
+  --entryComponent        Specifies if the component is an entry component of declaring module.
+  --routing               Specifies whether Angular routing is enabled. This controls whether anchor elements use href or routerLink
+  --dryRun                Runs through and reports activity without writing to disk.
+  --skip-nx-cache         Skip the use of Nx cache.
+  --help                  Show available options for project target.
+
